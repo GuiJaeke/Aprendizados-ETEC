@@ -1,11 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>WWW</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
-<body>
-    
-</body>
+
+<body class="conteudo">
+
+    <div class="col2">
+        <h1 class="h1">FTPS</h1>
+        <h2>Bem-vindo à nossa seção sobre a World Wide Web (FTPS)!</h2>
+        <hr>
+    </div>
+
+    <div class="quad">
+        <p style="margin-right: 60px;">
+            FTPS (FTP Secure) é uma extensão do protocolo FTP que adiciona camadas de segurança para a transferência de
+            arquivos. Ele usa o protocolo SSL/TLS (Secure Sockets Layer/Transport Layer Security) para criptografar a
+            comunicação entre o cliente e o servidor, garantindo que os dados transmitidos sejam protegidos contra
+            espionagem e interceptação.
+        <p>Principais Características do FTPS
+        <p>1 Criptografia:
+
+            - Criptografia de Dados: O FTPS criptografa a conexão usando SSL/TLS, o que impede que terceiros interceptem
+            e
+            leiam os dados transmitidos.
+            - Autenticação: Além de proteger os dados, o FTPS autentica o servidor e, opcionalmente, o cliente. Isso
+            ajuda
+            a garantir que você está se conectando ao servidor certo.
+
+        <p>2 Modos de Criptografia:
+
+            - FTPS Explícito: O cliente inicia a conexão de forma não criptografada e solicita a segurança após a
+            conexão
+            ser estabelecida. O cliente e o servidor negociam a criptografia usando comandos específicos.
+            - FTPS Implícito: A conexão é criptografada desde o início, sem a necessidade de uma solicitação adicional
+            para a segurança. O servidor FTPS implícito geralmente escuta em uma porta diferente da porta padrão FTP
+            (porta 990 é comum para FTPS implícito).
+
+        <p>3 Portas:
+
+            - Para FTPS explícito, a conexão inicial é geralmente feita na porta 21, e a criptografia é estabelecida
+            após a conexão.
+            - Para FTPS implícito, a conexão criptografada é estabelecida na porta 990.
+
+        <p>4 Compatibilidade:
+
+            - FTPS é compatível com clientes e servidores FTP padrão, mas adiciona suporte para criptografia. Muitos
+            clientes FTP modernos, como FileZilla e WinSCP, suportam FTPS.
+
+        <p>5 Segurança Adicional:
+
+            - Certificados Digitais: O servidor FTPS usa certificados digitais para autenticação, ajudando a garantir a
+            identidade do servidor.
+            - Controle de Integridade: A criptografia também garante a integridade dos dados durante a transferência, para
+            que não sejam alterados ou corrompidos.
+        </p>
+
+        <hr>
+        <footer>
+            <div class="ant" style="align-content: start;"><a href="pag1.html"><img src="setesq.png" alt=""
+                        width="48px"></a>
+            </div>
+            <div class="home" style="margin: 0 auto;"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg"
+                        height="48px" viewBox="0 -960 960 960" width="48px" fill="#000000">
+                        <path d="M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z" />
+                    </svg></a></div>
+            <div class="prox"><a href="pag3.html"><svg xmlns="http://www.w3.org/2000/svg" height="48px"
+                        viewBox="0 -960 960 960" width="48px" fill="#000000">
+                        <path d="m702-301-43-42 106-106H120v-60h646L660-615l42-42 178 178-178 178Z" />
+                    </svg></a></div>
+        </footer>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
 </html>
