@@ -1,5 +1,11 @@
-<form action="/cad/ferr" method="POST">
-    <label for="ferramenta">Nome da ferramenta</label>
-    <input type="text" name="fer" >
-    <input type="submit" value="Cadastrar">
-</form>
+<div class="container-form">
+  <form class="item-container" method="POST" action="/cad/ferr">
+    <div class="item-form">
+      <p>Nome do equipamento</p>
+      <input type="text" name="fer" required>
+      <p>Quantidade disponível</p>
+      <input type="number" name="quantidade" required>
+      <button type="submit">Cadastrar</button>
+    </div>
+  </form>
+</div>
