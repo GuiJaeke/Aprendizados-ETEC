@@ -39,10 +39,10 @@ const aluguel = conexaoComBanco.define("aluguel", {
     references: { model: ferramenta, key: 'id' }
   }
 });
-async function createDB(force) {
-  await User.sync(force);
-  await ferramenta.sync(force);
-  await aluguel.sync(force);
+async function createDB(a) {
+  await User.sync(a);
+  await ferramenta.sync(a);
+  await aluguel.sync(a);
 }
 async function createData() {
   await createDB({force: false})
@@ -61,14 +61,27 @@ app.get('/', function(req, res) {
   res.redirect('/login')
 })
 
-app.get("/home", async function (req, res) {
+app.get("/home/:id", async function (req, res) {
   const ferramentas = await ferramenta.findAll({raw: true})
   res.render('home', {ferramentas: ferramentas});
 });
 
+app.post("/alug", async function (req, res) {
+  const fer = req.body.fer
+})
+
 
 app.get("/cad/form", async function (req, res) {
   res.render('form');
+});
+
+app.post("/cad/ferr", async function (req, res) {
+  const ferr = req.body.fer
+  const quantidade = req.body.quantidade
+  for(let i = 0; i < quantidade; i++) {
+    await ferramenta.create({ nome_fer: ferr })
+  }
+  res.redirect('/home') //renderizando a pagina form.handlebars
 });
 
 app.get('/sign', async function sign(req, res) {
@@ -76,8 +89,9 @@ app.get('/sign', async function sign(req, res) {
   res.render('sign', {login})
 })
 app.post('/sign', async function signPost(req, res) {
-  const { nome_user, password } = req.body
-  await User.create({nome_user, password})
+  const password  = req.body.password
+  const nome = req.body.nome_user
+  await User.create({nome, password})
   res.redirect('/login')
 
 })
@@ -100,7 +114,7 @@ app.post('/login', async function loginPost(req, res) {
   }
   if (usuario.password == password) {
     console.log('here1');
-    return res.redirect('/home')
+    return res.redirect(`/home/${usuario.id}`)
   } else {
     console.log('here2');
     
@@ -109,14 +123,6 @@ app.post('/login', async function loginPost(req, res) {
 
 })
 
-app.post("/cad/ferr", async function (req, res) {
-  const ferr = req.body.fer
-  const quantidade = req.body.quantidade
-  for(let i = 0; i < quantidade; i++) {
-    await ferramenta.create({ nome_fer: ferr })
-  }
-  res.redirect('/') //renderizando a pagina form.handlebars
-});
 //###FIM ROTAS
 
 app.use(express.static('public'))
