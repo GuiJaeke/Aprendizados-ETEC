@@ -3,7 +3,10 @@
     {{#each ferramentas}}
     <div class="item">
       <h3>{{this.nome_fer}}</h3>
-      <button>Requisitar</button>
+      <form action="/alug" method="post">
+      <input type="hidden" name="ferId" value="{{this.id}}">
+      <input type="submit" value="Requisitar">
+      </form>
     </div>
     {{/each}}
     

@@ -30,6 +30,10 @@ const User = conexaoComBanco.define("User", {
   }
 });
 const aluguel = conexaoComBanco.define("aluguel", {
+  inUse: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false
+  },
   userId: {
     type: Sequelize.INTEGER,
     references: { model: User, key: 'id' }
@@ -40,9 +44,9 @@ const aluguel = conexaoComBanco.define("aluguel", {
   }
 });
 async function createDB(a) {
+  await aluguel.sync(a);
   await User.sync(a);
   await ferramenta.sync(a);
-  await aluguel.sync(a);
 }
 async function createData() {
   await createDB({force: false})
@@ -62,26 +66,42 @@ app.get('/', function(req, res) {
 })
 
 app.get("/home/:id", async function (req, res) {
+  const id = req.params.id
+  const usuario = await User.findOne({where: { id: id }, raw: true})
   const ferramentas = await ferramenta.findAll({raw: true})
-  res.render('home', {ferramentas: ferramentas});
+  res.render('home', {ferramentas: ferramentas, usuario: usuario});
 });
 
+app.get("/user/:id", async function (req, res) {
+  const id = req.params.id
+  const usuario = await User.findOne({include: aluguel, where: {id: id}})
+  console.log(usuario);
+  res.render('user')
+})
+
 app.post("/alug", async function (req, res) {
-  const fer = req.body.fer
+  const inUse = true
+  const userId = req.body.id
+  const ferramentaId = req.body.ferId
+  await aluguel.create({inUse, userId, ferramentaId})
+  res.redirect(`/home/${userId}`)
 })
 
 
-app.get("/cad/form", async function (req, res) {
-  res.render('form');
+app.get("/cad/form/:id", async function (req, res) {
+  const id = req.params.id
+  const usuario = await User.findOne({where: { id: id }, raw: true})
+  res.render('form', {usuario: usuario});
 });
 
 app.post("/cad/ferr", async function (req, res) {
+  const id = req.params.id
   const ferr = req.body.fer
   const quantidade = req.body.quantidade
   for(let i = 0; i < quantidade; i++) {
     await ferramenta.create({ nome_fer: ferr })
   }
-  res.redirect('/home') //renderizando a pagina form.handlebars
+  res.redirect(`/home/${id}`) //renderizando a pagina form.handlebars
 });
 
 app.get('/sign', async function sign(req, res) {
@@ -89,9 +109,9 @@ app.get('/sign', async function sign(req, res) {
   res.render('sign', {login})
 })
 app.post('/sign', async function signPost(req, res) {
-  const password  = req.body.password
   const nome = req.body.nome_user
-  await User.create({nome, password})
+  const password  = req.body.password
+  await User.create({nome_user: nome, password})
   res.redirect('/login')
 
 })

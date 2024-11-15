@@ -12,13 +12,13 @@
     {{#if login}}
     {{else}}
     <header>
-        <a href="/home">
+        <a href="/home/{{usuario.id}}">
             <h1>Ver ferramentas</h1>
         </a>
-        <a href="/cad/form">
+        <a href="/cad/form/{{usuario.id}}">
             <h1>cadastrar novo equipamento</h1>
         </a>
-        <a href="/user">
+        <a href="/user/{{usuario.id}}">
             <h1>Meu perfil</h1>    
         </a>
     </header>

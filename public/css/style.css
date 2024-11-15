@@ -159,7 +159,7 @@ body {
     border-color: #2a9df4;
   }
   
-  button {
+  button, input[type="submit"] {
     width: 100%;
     padding: 10px;
     background-color: #2a9df4;
@@ -171,6 +171,6 @@ body {
     transition: background-color 0.3s;
   }
   
-  button:hover {
+  button:hover, input[type="submit"]:hover  {
     background-color: #1b7bbf;
   }
