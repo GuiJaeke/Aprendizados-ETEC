@@ -1,12 +1,12 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f4f8;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
   }
   
   .container {
-    max-width: 1200px;
+    max-width: 80%;
     margin: 0 auto;
     padding: 20px;
   }
@@ -17,13 +17,21 @@ body {
     justify-content: space-between;
     text-align: center;
     padding: 20px 0;
-    background-color: #2a9df4;
-    color: #fff;
+    background-color: #434391;
+    padding: 30px;
   }
   
   header a {
     text-decoration: none;
-    color: black;
+    color: rgb(250, 0, 0);
+    -webkit-text-stroke: 2px ;
+    -webkit-text-stroke-color: black;
+    transition: transform 0.2s, -webkit-text-stroke-color 0.2s
+  }
+  header a:hover {
+    transform: scale(1.2);
+    -webkit-text-stroke: 1px ;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
   }
   
   .item-container {
@@ -34,12 +42,13 @@ body {
   }
   
   .item {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #a0a0a0;
+    border: 2px solid #000000;
     border-radius: 8px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
+    height: 250px;
   }
   
   .item:hover {
@@ -50,10 +59,14 @@ body {
   .item h3 {
     margin: 0 0 10px;
     font-size: 1.2rem;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 3px;
   }
   
   .item button {
-    background-color: #2a9df4;
+    background-color: #65f39c;
     color: #fff;
     border: none;
     padding: 10px 15px;
@@ -63,7 +76,7 @@ body {
   }
   
   .item button:hover {
-    background-color: #1b7bbf;
+    background-color: #047413;
   }
   .container-form {
     max-width: 500px;
@@ -71,16 +84,27 @@ body {
     padding: 20px;
   }
   .item-container {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    background-color: #a0a0a0;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: cover;
   }
   
   .item-form p {
     margin: 10px 0 5px;
     font-weight: bold;
     color: #333;
+  }
+  .item-form h3 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 3px;
   }
   
   .item-form input[type="text"],
@@ -99,23 +123,6 @@ body {
   .item-form input[type="text"]:focus,
   .item-form input[type="number"]:focus {
     border-color: #2a9df4;
-  }
-  
-  .item-form button {
-    background-color: #2a9df4;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-    display: inline-block;
-    margin-top: 10px;
-  }
-  
-  .item-form button:hover {
-    background-color: #1b7bbf;
   }
   .login-container {
     margin: 0 auto;
@@ -162,15 +169,25 @@ body {
   button, input[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #2a9df4;
+    background-color: #3cce48;
     color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s;
+    margin-top: 5%;
   }
   
   button:hover, input[type="submit"]:hover  {
-    background-color: #1b7bbf;
+    background-color: #00a00d;
+  }
+  button:disabled, input[type="submit"]:disabled  {
+    background-color: #5a5a5a;
+  }
+  .img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }

@@ -1,1 +1,33 @@
-<h1>mais ou menos</h1>
+<div class="container">
+    <h1>Olá, {{usuario.dataValues.nome_user}}!</h1>
+    <h1>essas são as ferramentas que estão com você</h1>
+  <div class="item-container">
+    {{#each usuario.Aluguels}}
+    {{#if this.dataValues.inUse}}
+    <div class="item">
+     <form action="/devolver" method="post">
+     <input type="hidden" name="ferramentaId" value='{{this.dataValues.Ferramentum.dataValues.id}}'>
+      <h3>{{this.dataValues.Ferramentum.dataValues.nome_fer}}</h3>
+      <div class="img">
+        <img src="/img/semfoto.png" alt="" width="100px">
+        <h4>Sem Imagem</h4>
+      </div>
+      <input type="submit" value="Devolver item">
+      </div>
+    </form>
+    {{/if}}
+    {{/each}}
+</div>
+
+<h1>Relatório de ferramentas usadas</h1>
+{{#each usuario.Aluguels}}
+    {{#if this.dataValues.inUse}}
+    {{else}}
+    <div class="item">
+      <h1>{{this.dataValues.Ferramentum.dataValues.nome_fer}}</h1>  
+      <h1>Usou de:{{this.dataValues.Ferramentum.dataValues.createdAt}}</h1>
+      <h1>Até: {{this.dataValues.Ferramentum.dataValues.updatedAt}}</h1>
+    </div>
+    </form>
+    {{/if}}
+{{/each}}

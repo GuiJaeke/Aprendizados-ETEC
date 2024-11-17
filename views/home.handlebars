@@ -1,13 +1,30 @@
 <div class="container">
+  <h1>Olá, {{usuario.nome_user}}!</h1>
   <div class="item-container">
     {{#each ferramentas}}
+    {{#if this.Aluguels.inUse}}
     <div class="item">
-      <h3>{{this.nome_fer}}</h3>
+      <h3>{{this.dataValues.nome_fer}}</h3>
+      <div class="img">
+        <img src="/img/semfoto.png" alt="" width="100px">
+        <h4>Sem Imagem</h4>
+      </div>
+      <input type="submit" value="Item em uso" disabled>
+    </div>
+    {{else}}
+    <div class="item">
+      <h3>{{this.dataValues.nome_fer}}</h3>
+      <div class="img">
+        <img src="/img/semfoto.png" alt="" width="100px">
+        <h4>Sem Imagem</h4>
+      </div>
       <form action="/alug" method="post">
-      <input type="hidden" name="ferId" value="{{this.id}}">
-      <input type="submit" value="Requisitar">
+        <input type="hidden" name="ferId" value="{{this.dataValues.id}}">
+        <input type="submit" value="Requisitar">
       </form>
     </div>
+    {{/if}}
     {{/each}}
-    
-</div>
+
+
+  </div>
