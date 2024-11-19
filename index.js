@@ -82,7 +82,6 @@ app.get("/home", async function (req, res) {
   if (id) {
   const usuario = await User.findOne({ where: { id: id }, raw: true })
   const ferramentas = await Ferramenta.findAll({ include: { model: Aluguel, limit: 1, order: [['createdAt', 'DESC']] } })
-  console.log(ferramentas[0].dataValues.Aluguels[0].dataValues.inUse);
   for (let i = 0; i < ferramentas.length; i++) {
     if (ferramentas[i].dataValues.Aluguels[0]) {
     const inUse = ferramentas[i].dataValues.Aluguels[0].dataValues.inUse;
@@ -93,7 +92,6 @@ app.get("/home", async function (req, res) {
 
   }
   }
-  console.log(ferramentas);
   
 
   res.render('home', { ferramentas: ferramentas, usuario: usuario });
@@ -182,7 +180,6 @@ app.get('/login', async function login(req, res) {
 })
 app.post('/login', async function loginPost(req, res) {
   const { userLogin, password } = req.body
-  console.log(userLogin);
 
 
   const usuario = await User.findOne({ where: { nome_user: userLogin }, raw: true })
